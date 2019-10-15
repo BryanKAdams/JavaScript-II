@@ -69,7 +69,7 @@ function multiplyNums(x, y, cb) {
   return cb(x * y)
 }
 multiplyNums(2, 4, function(multiply){
-  console.log
+  console.log(multiply);
 })
 
 function contains(item, list, cb) {

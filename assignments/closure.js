@@ -3,20 +3,39 @@
 // Keep it simple! Remember a closure is just a function
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
+const num3 = 4;
+const addTwoAndFour = function(num2){
+    const num1 = 2;
+    return num2 + num1 + num3;
+};
+console.log(addTwoAndFour(20));
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
 
 // ==== Challenge 2: Implement a "counter maker" function ====
-const counterMaker = () => {
+const counterMaker = (limit) => {
   // IMPLEMENTATION OF counterMaker:
   // 1- Declare a `count` variable with a value of 0. We will be mutating it, so declare it using `let`!
   // 2- Declare a function `counter`. It should increment and return `count`.
   //      NOTE: This `counter` function, being nested inside `counterMaker`,
   //      "closes over" the `count` variable. It can "see" it in the parent scope!
   // 3- Return the `counter` function.
-};
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}
+
+let myCounter = counterMaker();
+let myCounter2 = counterMaker();
+
+alert( myCounter() ); // 0
+alert( myCounter() ); // 1
+
+alert( myCounter2() ); // 0 (independent)
+
 // Example usage: const myCounter = counterMaker();
 // myCounter(); // 1
 // myCounter(); // 2
