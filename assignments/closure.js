@@ -15,7 +15,7 @@ console.log(addTwoAndFour(20));
 
 
 // ==== Challenge 2: Implement a "counter maker" function ====
-const counterMaker = (limit) => {
+const counterMaker = () => {
   // IMPLEMENTATION OF counterMaker:
   // 1- Declare a `count` variable with a value of 0. We will be mutating it, so declare it using `let`!
   // 2- Declare a function `counter`. It should increment and return `count`.
@@ -29,12 +29,8 @@ const counterMaker = (limit) => {
 }
 
 let myCounter = counterMaker();
-let myCounter2 = counterMaker();
+console.log(myCounter());
 
-alert( myCounter() ); // 0
-alert( myCounter() ); // 1
-
-alert( myCounter2() ); // 0 (independent)
 
 // Example usage: const myCounter = counterMaker();
 // myCounter(); // 1
@@ -43,7 +39,15 @@ alert( myCounter2() ); // 0 (independent)
 // ==== Challenge 3: Make `counterMaker` more sophisticated ====
 // It should have a `limit` parameter. Any counters we make with `counterMaker`
 // will refuse to go over the limit, and start back at 1.
-
+const counterMaker2 = (limit) => {
+  let count = 0;
+  return function counter2(){
+    count = (count % limit) + 1
+    return count
+  }
+ };
+ const myCounter2 = counterMaker2(10)
+ console.log(myCounter2());
 // ==== Challenge 4: Create a counter function with an object that can increment and decrement ====
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
